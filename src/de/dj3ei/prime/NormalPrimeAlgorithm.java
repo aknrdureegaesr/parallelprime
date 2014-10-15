@@ -1,8 +1,6 @@
-package de.dj3ei.prime.simple;
+package de.dj3ei.prime;
 
 import java.util.function.IntConsumer;
-
-import de.dj3ei.prime.PrimeAlgorithm;
 
 public class NormalPrimeAlgorithm implements PrimeAlgorithm {
     

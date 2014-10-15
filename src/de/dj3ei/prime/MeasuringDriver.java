@@ -4,9 +4,6 @@ import java.util.Arrays;
 import java.util.function.Consumer;
 import java.util.function.IntConsumer;
 
-import de.dj3ei.prime.simple.NormalPrimeAlgorithm;
-import de.dj3ei.prime.simple.PrimitivePrimeAlgorithm;
-
 public class MeasuringDriver implements Consumer<PrimeAlgorithm> {
 
     private int allPrimesHash;
