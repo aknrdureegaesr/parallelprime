@@ -61,13 +61,15 @@ public class ParallelPrimeAlgorithm extends SmallPrimes implements PrimeAlgorith
 
         @Override
         public java.util.Spliterator.OfInt trySplit() {
-            if(max <= base + tablePeriod + table[0] - 1) {
-                return null;
-            } else {
-                HighPrimesSpliterator result = new HighPrimesSpliterator(base + tablePeriod + table[0] - 1, tableOfHighPrimesUpToRoot, i, base);
-                base += tablePeriod;
+            int newBase = base + ((max - base) / tablePeriod / 2) * tablePeriod;
+            int newMax =  newBase + table[0] - 1;
+            if(base + table[i] < newMax && newMax < max) {
+                HighPrimesSpliterator result = new HighPrimesSpliterator(newMax, tableOfHighPrimesUpToRoot, i, base);
+                base = newBase;
                 i = 0;
                 return result;
+            } else {
+                return null;
             }
         }
 
