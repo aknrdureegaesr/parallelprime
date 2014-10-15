@@ -16,7 +16,7 @@ public class MeasuringDriver implements Consumer<PrimeAlgorithm> {
 
         @SuppressWarnings("unchecked")
         Class<? extends PrimeAlgorithm> algos[] = new Class[]{PrimitivePrimeAlgorithm.class, NormalPrimeAlgorithm.class};
-        Arrays.asList(algos).stream().map(
+        Arrays.stream(algos).map(
                 clazz -> {
                     try {
                         return clazz.newInstance();
