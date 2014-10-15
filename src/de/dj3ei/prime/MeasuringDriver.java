@@ -15,7 +15,11 @@ public class MeasuringDriver implements Consumer<PrimeAlgorithm> {
         MeasuringDriver md = new MeasuringDriver();
 
         @SuppressWarnings("unchecked")
-        Class<? extends PrimeAlgorithm> algos[] = new Class[]{PrimitivePrimeAlgorithm.class, NormalPrimeAlgorithm.class};
+        Class<? extends PrimeAlgorithm> algos[] = new Class[] {
+                PrimitivePrimeAlgorithm.class,
+                NormalPrimeAlgorithm.class, ParallelPrimeAlgorithm.class,
+                NormalPrimeAlgorithm.class, ParallelPrimeAlgorithm.class,
+                NormalPrimeAlgorithm.class, ParallelPrimeAlgorithm.class };
         Arrays.stream(algos).map(
                 clazz -> {
                     try {
@@ -27,7 +31,7 @@ public class MeasuringDriver implements Consumer<PrimeAlgorithm> {
     }
 
     private static class PrimeHasher implements IntConsumer {
-        private int hash;
+        private volatile int hash;
 
         @Override
         public void accept(int value) {

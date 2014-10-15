@@ -20,7 +20,7 @@ public class NormalPrimeAlgorithm extends SmallPrimes implements PrimeAlgorithm 
         }
     }
 
-    public void findHighPrimes(int max, IntConsumer primesEater) {
+    private void findHighPrimes(int max, IntConsumer primesEater) {
         if(max < SMALL_PRIMES[SMALL_PRIMES.length-1])
             return;
         int root = Util.intRoot(max);

@@ -4,7 +4,9 @@ import java.util.Arrays;
 
 public abstract class SmallPrimes {
     
-    protected static final int SMALL_PRIMES[] = new int[] {2, 3, 5, 7, 11, 13};
+    // The int boundary overflows at tablePeriod when all primes up to including 29 are listed.
+    // Runtime does not strongly depend on how many primes we list here for Normal, but does for Parallel.
+    protected static final int SMALL_PRIMES[] = new int[] {2, 3 , 5, 7, 11, 13};
     
     protected final int tablePeriod;
     protected final int table[];
