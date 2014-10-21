@@ -1,3 +1,17 @@
+/*
+ * Copyright © 2014 Dr. Andreas Krüger, dj3ei@famsik.de.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package de.dj3ei.prime;
 
 import java.util.Arrays;
@@ -9,6 +23,15 @@ public class MeasuringDriver implements Consumer<PrimeAlgorithm> {
     private int allPrimesHash;
     private boolean haveHash;
     
+// With MAX = 300000000, on my laptop:
+//    de.dj3ei.prime.NormalPrimeAlgorithm took 202.06 s.
+//    de.dj3ei.prime.ParallelPrimeAlgorithm took 89.619 s.
+//    de.dj3ei.prime.PrimitivePrimeAlgorithm took 473.522 s.
+//    de.dj3ei.prime.NormalPrimeAlgorithm took 202.076 s.
+//    de.dj3ei.prime.ParallelPrimeAlgorithm took 93.078 s.
+//    de.dj3ei.prime.NormalPrimeAlgorithm took 159.026 s.
+//    de.dj3ei.prime.ParallelPrimeAlgorithm took 84.053 s.
+    
     private final static int MAX = 30000000;
 
     public static void main(String[] args) {
@@ -16,8 +39,8 @@ public class MeasuringDriver implements Consumer<PrimeAlgorithm> {
 
         @SuppressWarnings("unchecked")
         Class<? extends PrimeAlgorithm> algos[] = new Class[] {
-                PrimitivePrimeAlgorithm.class,
                 NormalPrimeAlgorithm.class, ParallelPrimeAlgorithm.class,
+                PrimitivePrimeAlgorithm.class,
                 NormalPrimeAlgorithm.class, ParallelPrimeAlgorithm.class,
                 NormalPrimeAlgorithm.class, ParallelPrimeAlgorithm.class };
         Arrays.stream(algos).map(
